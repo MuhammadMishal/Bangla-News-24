@@ -34,12 +34,14 @@ const SignUpPage = () => {
   const handleGoogleSignIn = async () => {
     await authClient.signIn.social({
       provider: "google",
+      callbackURL: process.env.BETTER_AUTH_URL,
     });
   };
 
   const handleGithubSignIn = async () => {
     await authClient.signIn.social({
       provider: "github",
+      callbackURL: process.env.BETTER_AUTH_URL,
     });
   };
 
