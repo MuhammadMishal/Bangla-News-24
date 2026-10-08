@@ -32,17 +32,24 @@ const SignInPage = () => {
   };
 
   const handleGoogleSignIn = async () => {
-    await authClient.signIn.social({
-      provider: "google",
-    });
-
+    try {
+      await authClient.signIn.social({
+        provider: "google",
+      });
+    } catch (error) {
+      console.log(error, JSON.stringify(error));
+    }
   };
 
   const handleGithubSignIn = async () => {
- await authClient.signIn.social({
-      provider: "github",
-    });
-  }
+    try {
+      await authClient.signIn.social({
+        provider: "github",
+      });
+    } catch (error) {
+      console.log(error, JSON.stringify(error));
+    }
+  };
 
   return (
     <div className="flex flex-col items-center justify-center mt-5">
@@ -71,8 +78,12 @@ const SignInPage = () => {
         </fieldset>
       </form>
 
-      <button onClick={handleGoogleSignIn} className="btn ">Sign In With Google</button>
-      <button onClick={handleGithubSignIn} className="btn ">Sign In With Github</button>
+      <button onClick={handleGoogleSignIn} className="btn ">
+        Sign In With Google
+      </button>
+      <button onClick={handleGithubSignIn} className="btn ">
+        Sign In With Github
+      </button>
     </div>
   );
 };
